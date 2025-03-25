@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSR Check-in</title>
+</head>
+<body>
+    <h2>Enter CSR Details</h2>
+    <form action="/submit" method="POST">
+        <label>APM ID:</label><br>
+        <input type="text" name="apm_id" required><br><br>
+
+        <label>Department:</label><br>
+        <input type="text" name="department" required><br><br>
+
+        <label>CSR Type:</label><br>
+        <select name="csr_type" required>
+            <option value="Type 1">Type 1</option>
+            <option value="Type 2">Type 2</option>
+            <option value="Type 3">Type 3</option>
+            <option value="Type 4">Type 4</option>
+            <option value="Type 5">Type 5</option>
+        </select><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
