@@ -3,5 +3,6 @@ venv/
 
 # Ignore Excel log file
 ~$csr_log.xlsx
+csr_log.xlsx
 
 csr_qr.png
