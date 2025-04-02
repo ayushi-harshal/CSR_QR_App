@@ -4,6 +4,7 @@ from datetime import datetime
 import os
  
 app = Flask(__name__)
+CORS(app)
 EXCEL_FILE = 'csr_log.xlsx'
  
 # Initialize Excel if not present
@@ -13,13 +14,14 @@ if not os.path.exists(EXCEL_FILE):
  
 @app.route('/')
 def scan_qr():
-    return render_template('form.html')
+    return jsonify({"message":"Backend is Running!"})
  
 @app.route('/submit', methods=['POST'])
 def submit():
-    apm_id = request.form['apm_id']
-    department = request.form['department']
-    csr_type = request.form['csr_type']
+    data=request.get_json()
+    apm_id = data.form['apm_id']
+    department = data.form['department']
+    csr_type = data.form['csr_type']
     current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
  
     df = pd.read_excel(EXCEL_FILE)
@@ -47,7 +49,7 @@ def submit():
 
  
     df.to_excel(EXCEL_FILE, index=False)
-    return "Entry submitted successfully!"
+    return jsonify({"message":"Entry submitted successfully!"})
  
 if __name__ == '__main__':
     app.run(debug=True)
